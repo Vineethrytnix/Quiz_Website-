@@ -1,0 +1,212 @@
+{% extends 'Creator/common.html' %}
+{% load static %}
+{% block header %}
+
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+	<div class="container-full">
+		<!-- Content Header (Page header) -->
+		<div class="content-header">
+			<div class="d-flex align-items-center">
+				<div class="mr-auto">
+					<h3 class="page-title"><b>Add Quiz Questions</b></h3>
+					
+				</div>
+
+			</div>
+		</div>
+
+		<!-- Main content -->
+		<section class="content" style="border-radius: 10px;">
+			<div class="row">
+				<div class="col-md-3"></div>
+				<div class="col-lg-6 col-12">
+					<div class="box">
+						<div class="box-header with-border">
+							<center><h4 class="box-title"><b>Add New Quiz Questions</b></h4></center>
+						</div>
+						<!-- /.box-header -->
+						<form class="form" method="post" enctype="multipart/form-data">
+							{% csrf_token %}
+							<div class="box-body">
+								<h4 class="box-title text-info"><i class="ti-user mr-15"></i> Add Options</h4>
+								<hr class="my-15">
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<label>First Option</label>
+											<input type="text" name="op1" class="form-control" placeholder="First Option">
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label>Second Option</label>
+											<input type="text" name="op2" class="form-control" placeholder="Second Option">
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<label>Third Option</label>
+											<input type="text" name="op3" class="form-control" placeholder="Third Option">
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label>Fourth Option</label>
+											<input type="text" name="op4" class="form-control" placeholder="Fourth Option">
+										</div>
+									</div>
+								</div><br>
+								<h4 class="box-title text-info"><i class="ti-save mr-15"></i> Add Answer</h4>
+								<hr class="my-15">
+								<div class="form-group">
+									<label>Answer</label>
+									<input type="text" class="form-control" name="answer" placeholder="Enter the correct answer">
+								</div>
+								<!-- <div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<label>Interested in</label>
+											<select class="form-control">
+												<option>Interested in</option>
+												<option>design</option>
+												<option>development</option>
+												<option>illustration</option>
+												<option>branding</option>
+												<option>video</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label>Budget</label>
+											<select class="form-control">
+												<option>Budget</option>
+												<option>less than 5000$</option>
+												<option>5000$ - 10000$</option>
+												<option>10000$ - 20000$</option>
+												<option>more than 20000$</option>
+											</select>
+										</div>
+									</div>
+								</div> -->
+								<div class="form-group">
+									<label>Select File</label>
+									<label class="file">
+										<input type="file" id="file" name="file">
+									</label>
+								</div>
+								<div class="form-group">
+									<label>Add Question</label>
+									<textarea rows="5" class="form-control" name="question" placeholder="Enter The question in detail"></textarea>
+								</div>
+							</div>
+							<!-- /.box-body -->
+							<div class="box-footer">
+								<button type="reset" class="btn btn-rounded btn-warning btn-outline mr-1">
+									<i class="ti-trash"></i> Cancel
+								</button>
+								<button type="submit" class="btn btn-rounded btn-primary btn-outline">
+									<i class="ti-save-alt"></i> Save
+								</button>
+							</div>
+						</form>
+					</div>
+					<!-- /.box -->
+				</div>
+
+
+			</div>
+
+			<!-- /.row -->
+
+		</section>
+		<!-- /.content -->
+	</div>
+</div>
+<!-- /.content-wrapper -->
+
+
+
+<!-- Fooooooooooooooooooterr -->
+
+<!-- 
+
+<div class="col-lg-6 col-12">
+	<div class="box">
+		<div class="box-header with-border">
+			<h4 class="box-title">Sample form 2</h4>
+		</div>
+
+		<form class="form">
+			<div class="box-body">
+				<h4 class="box-title text-info"><i class="ti-user mr-15"></i> About User</h4>
+				<hr class="my-15">
+				<div class="row">
+					<div class="col-md-6">
+
+						<div class="form-group">
+							<label>First Name</label>
+							<input type="text" class="form-control" placeholder="First Name">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Last Name</label>
+							<input type="text" class="form-control" placeholder="Last Name">
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>E-mail</label>
+							<input type="text" class="form-control" placeholder="E-mail">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Contact Number</label>
+							<input type="text" class="form-control" placeholder="Phone">
+						</div>
+					</div>
+				</div>
+				<h4 class="box-title text-info"><i class="ti-envelope mr-15"></i> Contact Info &
+					Bio</h4>
+				<hr class="my-15">
+				<div class="form-group">
+					<label>Email</label>
+					<input class="form-control" type="email" placeholder="email">
+				</div>
+				<div class="form-group">
+					<label>Website</label>
+					<input class="form-control" type="url" placeholder="http://">
+				</div>
+				<div class="form-group">
+					<label>Contact Number</label>
+					<input class="form-control" type="tel" placeholder="Contact Number">
+				</div>
+				<div class="form-group">
+					<label>Bio</label>
+					<textarea rows="4" class="form-control" placeholder="Bio"></textarea>
+				</div>
+			</div>
+
+			<div class="box-footer text-right">
+				<button type="button" class="btn btn-rounded btn-warning btn-outline mr-1">
+					<i class="ti-trash"></i> Cancel
+				</button>
+				<button type="submit" class="btn btn-rounded btn-primary btn-outline">
+					<i class="ti-save-alt"></i> Save
+				</button>
+			</div>
+		</form>
+	</div>
+
+</div>
+ -->
+
+{% endblock %}

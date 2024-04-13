@@ -1,0 +1,71 @@
+{% extends 'User/common.html' %}
+{% load static %}
+{% block header %}
+
+
+<div class="content-wrapper">
+    <div class="container-full">
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-12">
+                    <div class="box bg-gradient-primary overflow-hidden pull-up">
+                        <div class="box-body pr-0 pl-lg-50 pl-15 py-0">
+                            <div class="row align-items-center">
+                                {% for i in view %}
+                                <div class="col-12 col-lg-8">
+
+                                    <h1 class="font-size-40 text-white"><b>You Scored : {{i.mark}}</b> {{i.name}} 😊
+                                    </h1>
+                                    <p class="text-white mb-0 font-size-20">
+                                        Answered : {{i.answer}}/5
+                                    </p>
+                                </div>
+                                <div class="col-12 col-lg-4"><img
+                                        src="https://eduadmin-template.multipurposethemes.com/bs4/images/svg-icon/color-svg/custom-15.svg"
+                                        alt=""></div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <section class="content">
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-sm-4"
+                        style="background-color: rgba(26, 131, 224, 0.369);padding: 10px;border-radius: 10px;">
+                        <center>{% for i in view %}
+                            <h1>
+                                <b>Score : {{i.mark}}</b>
+                                <p>Answered : {{i.answer}}/5</p>
+                            </h1>
+                            {% endfor %}
+                            <hr>
+                            <p class="text-white">Answers </p>
+                            <hr>
+                        </center>
+
+                        <ol>
+                            {% for j in ans %}
+                            <li class="text-white">
+                                <p class="text-white">{{j.answer}}</p>
+                            </li>
+                            {% endfor %}
+                        </ol>
+
+                        <br><br>
+                        <hr>
+                        <center><span>Click Here to Go Back</span><a href="/user_view_quiz_category"> Home</a></center>
+                        <hr><br><br><br><br>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </div>
+</div>
+
+
+
+
+{% endblock %}

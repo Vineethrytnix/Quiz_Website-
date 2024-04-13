@@ -1,0 +1,78 @@
+{% extends 'User/common.html' %}
+{% load static %}
+{% block header %}
+
+<style>
+    table {
+        text-align: center !important;
+    }
+</style>
+
+<div class="content-wrapper">
+    <div class="container-full">
+        <section class="content">
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="box bg-gradient-primary overflow-hidden pull-up">
+                        <div class="box-body pr-0 pl-lg-50 pl-15 py-0">
+                            <div class="row align-items-center">
+                                <div class="col-12 col-lg-8">
+                                    <h1 class="font-size-40 text-white"><b>Quiz Website</b> {{i.name}} 😊</h1>
+                                    <p class="text-white mb-0 font-size-20">
+                                        Education is the passport to the future, So learn more & more
+                                    </p>
+                                </div>
+                                <div class="col-12 col-lg-4"><img
+                                        src="https://eduadmin-template.multipurposethemes.com/bs4/images/svg-icon/color-svg/custom-15.svg"
+                                        alt=""></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-12 col-lg-6">
+                    <div class="box">
+                        <div class="box-header with-border">
+                            <h4 class="box-title">Quiz Answers</h4>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered mb-0">
+                                    <tbody>
+                                        <tr>
+                                            <th scope="col">No</th>
+                                            <th scope="col">Question</th>
+                                            <th scope="col">Answered</th>
+                                            <th scope="col">Mark</th>
+                                            <th scope="col">Action</th>
+                                        </tr>
+                                    </tbody>
+                                    <tbody>
+                                        {% for i in view %}
+                                        {{ forloop.counter }}
+                                        <tr>
+                                            <th scope="row">{{ forloop.counter }}</th>
+                                            <td>{{i.qcid.category}}</td>
+                                            <td>{{i.answer}}/5</td>
+                                            <td>{{i.mark}}</td>
+                                            <td><a href="/delete_answer?aid={{i.id}}" class="btn btn-outline-warning"
+                                                    style="color: aliceblue;">Delete</a></td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock %}

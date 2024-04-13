@@ -1,0 +1,81 @@
+{% extends 'Creator/common.html' %}
+{% load static %}
+{% block header %}
+
+
+<div class="content-wrapper">
+    <div class="container-full">
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-12">
+                    <div class="box bg-gradient-primary overflow-hidden pull-up">
+                        <div class="box-body pr-0 pl-lg-50 pl-15 py-0">
+                            <div class="row align-items-center">
+                                <div class="col-12 col-lg-8">
+                                    
+                                    <h1 class="font-size-40 text-white"><b>Quiz Website</b> 😊</h1>
+                                    
+                                    <p class="text-white mb-0 font-size-20">
+                                        Education is the passport to the future, So learn more & more
+                                    </p>
+                                </div>
+                                <div class="col-12 col-lg-4"><img
+                                        src="https://eduadmin-template.multipurposethemes.com/bs4/images/svg-icon/color-svg/custom-15.svg"
+                                        alt=""></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="box no-shadow mb-0 bg-transparent">
+                        <div class="box-header no-border px-0">
+                            <h4 class="box-title">Added Questions</h4>
+                            <ul class="box-controls pull-right d-md-flex d-none">
+                                <li>
+                                    <button class="btn btn-primary-light px-10">View All</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                {% for i in view %}
+                <div class="col-xl-3 col-md-6 col-12">
+                    <div class="box pull-up">
+                        <div class="box-body">
+                            <div class="bg-primary rounded">
+                                <h5 class="text-white text-center p-10">Answer : {{i.answer}}</h5>
+                            </div>
+                            <p class="mb-0 font-size-18"><b>Question :</b> {{i.question}}</p><br>
+                            <p class="mb-0 font-size-18">1. {{i.op1}}</p>
+                            <p class="mb-0 font-size-18">2. {{i.op2}}</p>
+                            <p class="mb-0 font-size-18">3. {{i.op3}}</p>
+                            <p class="mb-0 font-size-18">4. {{i.op4}}</p>
+                            <div class="d-flex justify-content-between mt-30">
+                                <div>
+                                    <p class="mb-0 text-fade">Answer</p>
+                                    <p class="mb-0"><b>{{i.answer}}</b></p>
+                                </div>
+                                <div>
+                                    <!-- <p class="mb-5 font-weight-600">55%</p> -->
+                                    
+                                        <a href="/delete_question?qid={{i.id}}" class="btn btn-danger">Delete </a>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {% endfor %}
+                
+            </div>
+        </section>
+        <!-- /.content -->
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,98 @@
+{% extends 'User/common.html' %}
+{% load static %}
+{% block header %}
+
+<div class="content-wrapper">
+    <div class="container-full">
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-12">
+                    <div class="box bg-gradient-primary overflow-hidden pull-up">
+                        <div class="box-body pr-0 pl-lg-50 pl-15 py-0">
+                            <div class="row align-items-center">
+                                <div class="col-12 col-lg-8">
+
+                                    <h1 class="font-size-40 text-white"><b>Quiz Website</b> {{i.name}} 😊</h1>
+                                    <p class="text-white mb-0 font-size-20">
+                                        Education is the passport to the future, So learn more & more
+                                    </p>
+                                </div>
+                                <div class="col-12 col-lg-4"><img
+                                        src="https://eduadmin-template.multipurposethemes.com/bs4/images/svg-icon/color-svg/custom-15.svg"
+                                        alt=""></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <section class="content">
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="box no-shadow mb-0 bg-transparent">
+                            <div class="box-header no-border px-0">
+                                <h4 class="box-title"><b>Question Categories</b></h4>
+                                <ul class="box-controls pull-right d-md-flex d-none">
+                                    <li>
+                                        <button class="btn btn-primary-light px-10">View All</button>
+                                    </li>
+                                    <li class="dropdown">
+                                        <button class="dropdown-toggle btn btn-primary-light px-10"
+                                            data-toggle="dropdown" href="#" aria-expanded="false">Most
+                                            Popular</button>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <a class="dropdown-item active" href="#">Today</a>
+                                            <a class="dropdown-item" href="#">Yesterday</a>
+                                            <a class="dropdown-item" href="#">Last week</a>
+                                            <a class="dropdown-item" href="#">Last month</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    {% for i in view %}
+
+                    <div class="col-xl-3 col-md-6 col-12">
+                        <div class="box bg-dark pull-up"
+                            style="background-image: url(https://eduadmin-template.multipurposethemes.com/bs4/images/svg-icon/color-svg/st-1.svg); background-position: right bottom; background-repeat: no-repeat;">
+                            <div class="box-body">
+                                <div class="flex-grow-1">
+                                    <div class="d-flex align-items-center pr-2 justify-content-between">
+                                        <div class="d-flex">
+                                            Questioner :
+                                            <span class="badge badge-primary mr-15">{{i.cid.name}}</span>
+                                            <!-- <span class="badge badge-primary mr-5"><i class="fa fa-lock"></i></span>
+                                        <span class="badge badge-primary"><i class="fa fa-clock-o"></i></span> -->
+                                        </div>
+                                        <div class="dropdown">
+                                            <a data-toggle="dropdown" href="#" class="px-10 pt-5"><i
+                                                    class="ti-more-alt"></i></a>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <a class="dropdown-item" href="/"><i class="ti-printer"></i>
+                                                    View Question</a>
+                                                <!-- <a class="dropdown-item" href="#"><i class="ti-export"></i>
+                                                Export</a>
+                                            <a class="dropdown-item" href="#"><i class="ti-printer"></i>
+                                                Print</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="#"><i class="ti-settings"></i>
+                                                Settings</a> -->
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                    <h4 class="mt-25 mb-5">Category : <b>{{i.category}}</b></h4><br>
+                                    <p class="text-fade mb-0 font-size-12"><a href="/answe_to_question?qcid={{i.id}}&cid={{i.cid.loginid_id}}" class="btn btn-outline-info">Answer Quiz</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </section>
+    </div>
+</div>
+
+{% endblock %}

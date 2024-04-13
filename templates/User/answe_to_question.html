@@ -1,0 +1,137 @@
+{% extends 'User/common.html' %}
+{% load static %}
+{% block header %}
+
+
+<div class="content-wrapper">
+
+    <div class="container-full">
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-12">
+                    <div class="box bg-gradient-primary overflow-hidden pull-up">
+                        <div class="box-body pr-0 pl-lg-50 pl-15 py-0">
+                            <div class="row align-items-center">
+                                <div class="col-12 col-lg-8">
+
+                                    <h1 class="font-size-40 text-white"><b>Quiz Website</b> {{i.name}} 😊</h1>
+                                    <p class="text-white mb-0 font-size-20">
+                                    <div id="countdown" class="text-white font-size-20">
+                                        Time remaining: <span id="time" style="color: red;">01:00</span> minutes
+                                    </div>
+                                    </p>
+                                </div>
+                                <div class="col-12 col-lg-4"><img
+                                        src="https://eduadmin-template.multipurposethemes.com/bs4/images/svg-icon/color-svg/custom-15.svg"
+                                        alt=""></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-lg-6 col-12">
+                    <!-- Basic Forms -->
+                    <div class="box">
+                        <div class="box-header with-border">
+                            <h4 class="box-title">Answer the Question </h4>
+                        </div>
+                        <!-- /.box-header -->
+                        <form method="post">
+                            {% csrf_token %}
+                            {% for question in view %}
+                            <div class="box-body">
+                                <center><img src="/static/media/{{ question.image }}" alt="" width="400px"></center>
+                                <br><br>
+                                <h4 class="mt-0 mb-20">Q. {{ question.question }}:</h4>
+                                <br>
+                                <div class="form-group">
+                                    <label>Select Correct Option :</label>
+                                    <div class="c-inputs-stacked">
+                                        <input name="question_{{ question.id }}" type="radio"
+                                            id="radio_{{ question.id }}_op1" value="{{ question.op1 }}/{{question.id}}"
+                                            required>
+                                        <label for="radio_{{ question.id }}_op1" class="mr-30">{{ question.op1}}</label>
+                                        <input name="question_{{ question.id }}" type="radio"
+                                            id="radio_{{ question.id }}_op2" value="{{ question.op2 }}/{{question.id}}"
+                                            required>
+                                        <label for="radio_{{ question.id }}_op2" class="mr-30">{{ question.op2}}</label>
+                                        <input name="question_{{ question.id }}" type="radio"
+                                            id="radio_{{ question.id }}_op3" value="{{ question.op3 }}/{{question.id}}"
+                                            required>
+                                        <label for="radio_{{ question.id }}_op3" class="mr-30">{{ question.op3}}</label>
+                                        <input name="question_{{ question.id }}" type="radio"
+                                            id="radio_{{ question.id }}_op4" value="{{ question.op4 }}/{{question.id}}"
+                                            required>
+                                        <label for="radio_{{ question.id }}_op4" class="mr-30">{{ question.op4}}</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="hidden" name="answer" value="{{question.id}}" id="">
+                            <hr>
+                            {% endfor %}
+                            <!-- /.box-body -->
+                            <div class="box-footer">
+                                <button type="reset" class="btn btn-rounded btn-danger">Reset</button>
+                                <button type="submit" class="btn btn-rounded btn-success pull-right">Submit</button>
+                            </div>
+                        </form>
+
+
+
+                    </div>
+                    <!-- /.box -->
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<script>
+    var formSubmitted = false; // Flag to check if form is submitted
+
+    // Set the timeout duration (3 minutes)
+    var timeoutDuration = 1 * 60 * 1000; // 3 minutes in milliseconds
+
+    var endTime = new Date().getTime() + timeoutDuration;
+
+    var interval = setInterval(function () {
+        var now = new Date().getTime();
+        var distance = endTime - now;
+
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById('time').textContent = (minutes < 10 ? "0" : "") + minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+
+        if (distance < 0) {
+            clearInterval(interval);
+            alert('Time is up!');
+            window.location.href = '/your-redirect-url/'; // Update this URL
+        }
+    }, 1000);
+
+    // Function to handle the page redirect if the user tries to leave or refresh the page
+    window.onbeforeunload = function (e) {
+        if (!formSubmitted) {
+            // Custom message for onbeforeunload does not work in most modern browsers
+            var message = "Data will be lost if you leave the page, are you sure?";
+            e.returnValue = message;
+            return message;
+        }
+    };
+
+    // Add an event listener for form submission
+    document.addEventListener('DOMContentLoaded', function () {
+        var forms = document.getElementsByTagName('form');
+        for (var i = 0; i < forms.length; i++) {
+            forms[i].addEventListener('submit', function () {
+                formSubmitted = true; // Set the flag to true when form is submitted
+            });
+        }
+    });
+</script>
+
+{% endblock %}

@@ -1,0 +1,253 @@
+<style>
+	@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;900&display=swap');
+
+	*,
+	body {
+		font-family: 'Poppins', sans-serif;
+		font-weight: 400;
+		-webkit-font-smoothing: antialiased;
+		text-rendering: optimizeLegibility;
+		-moz-osx-font-smoothing: grayscale;
+	}
+
+	html,
+	body {
+		height: 100%;
+		background-color: #152733;
+		overflow: hidden;
+	}
+
+
+	.form-holder {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		min-height: 100vh;
+	}
+
+	.form-holder .form-content {
+		position: relative;
+		text-align: center;
+		display: -webkit-box;
+		display: -moz-box;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;
+		-webkit-justify-content: center;
+		justify-content: center;
+		-webkit-align-items: center;
+		align-items: center;
+		padding: 60px;
+	}
+
+	.form-content .form-items {
+		border: 3px solid #fff;
+		padding: 40px;
+		display: inline-block;
+		width: 100%;
+		min-width: 540px;
+		-webkit-border-radius: 10px;
+		-moz-border-radius: 10px;
+		border-radius: 10px;
+		text-align: left;
+		-webkit-transition: all 0.4s ease;
+		transition: all 0.4s ease;
+	}
+
+	.form-content h3 {
+		color: #fff;
+		text-align: left;
+		font-size: 28px;
+		font-weight: 600;
+		margin-bottom: 5px;
+	}
+
+	.form-content h3.form-title {
+		margin-bottom: 30px;
+	}
+
+	.form-content p {
+		color: #fff;
+		text-align: left;
+		font-size: 17px;
+		font-weight: 300;
+		line-height: 20px;
+		margin-bottom: 30px;
+	}
+
+
+	.form-content label,
+	.was-validated .form-check-input:invalid~.form-check-label,
+	.was-validated .form-check-input:valid~.form-check-label {
+		color: #fff;
+	}
+
+	.form-content input[type=text],
+	.form-content input[type=password],
+	.form-content input[type=email],
+	.form-content input[type=file],
+	.form-content select {
+		width: 100%;
+		padding: 9px 20px;
+		text-align: left;
+		border: 0;
+		outline: 0;
+		border-radius: 6px;
+		background-color: #fff;
+		font-size: 15px;
+		font-weight: 300;
+		color: #8D8D8D;
+		-webkit-transition: all 0.3s ease;
+		transition: all 0.3s ease;
+		margin-top: 16px;
+	}
+
+
+	.btn-primary {
+		background-color: #6C757D;
+		outline: none;
+		border: 0px;
+		box-shadow: none;
+	}
+
+	.btn-primary:hover,
+	.btn-primary:focus,
+	.btn-primary:active {
+		background-color: #495056;
+		outline: none !important;
+		border: none !important;
+		box-shadow: none;
+	}
+
+	.form-content textarea {
+		position: static !important;
+		width: 100%;
+		padding: 8px 20px;
+		border-radius: 6px;
+		text-align: left;
+		background-color: #fff;
+		border: 0;
+		font-size: 15px;
+		font-weight: 300;
+		color: #8D8D8D;
+		outline: none;
+		resize: none;
+		height: 120px;
+		-webkit-transition: none;
+		transition: none;
+		margin-bottom: 14px;
+	}
+
+	.form-content textarea:hover,
+	.form-content textarea:focus {
+		border: 0;
+		background-color: #ebeff8;
+		color: #8D8D8D;
+	}
+
+	.mv-up {
+		margin-top: -9px !important;
+		margin-bottom: 8px !important;
+	}
+
+	.invalid-feedback {
+		color: #ff606e;
+	}
+
+	.valid-feedback {
+		color: #2acc80;
+	}
+
+	#submit {
+		background-color: #b82525;
+		outline: none;
+		border: 0px;
+		box-shadow: none;
+		padding: 10px 30px;
+		cursor: pointer;
+		border-radius: 10px;
+		color: #ebeff8;
+	}
+</style>
+
+{% for i in messages %}
+<script>
+    alert("{{i}}")
+</script>
+{% endfor %}
+
+<div class="form-body">
+	<div class="row">
+		<div class="form-holder">
+			<div class="form-content">
+				<div class="form-items">
+					<h3>Quiz Creator Reg</h3>
+					<p>Fill in the data below.</p>
+					<form class="requires-validation" method="post" enctype="multipart/form-data">
+						{% csrf_token %}
+						<div class="col-md-12">
+							<input class="form-control" type="text" name="name" placeholder="Full Name" required>
+
+						</div>
+
+						<div class="col-md-12">
+							<input class="form-control" type="email" name="email"
+								pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="E-mail Address" required>
+
+						</div>
+
+						<div class="col-md-12">
+							<input class="form-control" type="text" maxlength="10" minlength="10" required
+								pattern="[6789][0-9]{9}" name="phone" placeholder="Phone" required>
+
+						</div>
+
+
+						<div class="col-md-12">
+							<input class="form-control" type="password" name="password"
+								pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+								title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"
+								placeholder="Password" required>
+							<br>
+						</div>
+
+						<div class="col-md-12">
+							<label for="">Profile Image</label>
+							<input class="form-control" type="file" name="image" placeholder="Password" required>
+
+						</div>
+						<br>
+
+						<!-- <div class="col-md-12 mt-3">
+							<label class="mb-3 mr-1" for="gender">Gender: </label>
+
+							<input type="radio" class="btn-check" name="gender" value="male" autocomplete="off"
+								required>
+							<label class="btn btn-sm btn-outline-secondary" for="male">Male</label>
+
+							<input type="radio" class="btn-check" name="gender" value="female" autocomplete="off"
+								required>
+							<label class="btn btn-sm btn-outline-secondary" for="female">Female</label>
+
+							<input type="radio" class="btn-check" name="gender" value="other" autocomplete="off"
+								required>
+							<label class="btn btn-sm btn-outline-secondary" for="secret">Other</label>
+
+						</div> -->
+						<br>
+						<div class="form-button mt-3">
+							<center>
+								<button id="submit" type="submit" class="btn btn-primary">Register</button>
+								<br><br>
+								<span style="color: #ebeff8;">Click here to </span><a href="/"
+									style="color: #b82525;text-decoration: none;">Login</a>
+							</center>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
